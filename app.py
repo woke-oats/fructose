@@ -41,11 +41,12 @@ def index():
 
 @app.route("/upload", methods=["POST"])
 def upload_file():
-    if "file" not in request.files or request.files.filename == "":
+    """ Upload a given file """
+    file = request.files['file']
+    if "file" not in request.files or file == "":
         app.logger.error("no file attached")
         return jsonify({})
 
-    file = request.files
     allowed = allowed_file(file.filename)
 
     if file and allowed:
