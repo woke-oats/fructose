@@ -12,51 +12,74 @@
         body {
             background-color: #FFBEBE;
             color: #F276C9;
-            font-size: 3vw;
+            font-size: 50px;
             text-align: center;
             font-family: 'Dosis', sans-serif;
-            background-image: url('img/fructose_model.png');
-            background-position: 100% 100%;
-            background-repeat: no-repeat;
-            background-size: 200px 171px;
             margin: 0;
+            width: 100%;
             height: 100%;
             min-height: 100%;
+            background-image: url('img/fructose_model.png');
+            background-repeat: no-repeat;
+            background-size: 200px 171px;
+            background-position: 0% 0%;
+            position: absolute;
         }
 
         #logo {
-            width: 30%;
-            font-size: 10vw;
+            height: 229px;
+            width: 503px;
+            font-size: 200px;
             line-height: 9vw;
             color: #7FABFF;
         }
 
         #heading {
-            line-height: 0px;
+            line-height: 30px;
         }
 
         #form {
             background-color: #BEFFC0;
             color: #DD97FF;
-            font-size: 2.4vw;
+            font-size: 40px;
         }
 
         .comicsans {
             font-family: 'Comic Sans MS', sans-serif;
         }
 
-        #end {
-            position: relative;
-        }
-
         footer {
             position: absolute;
+            font-size: 30px;
+            width: 100%;
             bottom: 0;
         }
 
         li {
             color: #9FD1FF;
             font-size: 2vw;
+        }
+
+        @media only screen and (max-width: 750px) {
+            footer {
+                font-size: 4vw;
+            }
+
+            #form {
+                font-size: 5vw;
+            }
+
+            body {
+                font-size: 6vw;
+                background-size: 15vw auto;
+            }
+
+        }
+        @media only screen and (max-width: 600px) {
+        #logo {
+                width: 80%;
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -76,9 +99,7 @@
         </div>
     </div>
 
-    <div id="bottom">
-        <footer>🍉🍏🍒🍍🍈🥭🍓🥝🍋🍑🍊🍐🍌🍎🍇</footer>
-    </div>
+    <footer>🍉🍏🍒🍍🍈🥭🍓🥝🍋🍑🍊🍐🍌🍎🍇</footer>
 
     <script>
         const input = document.getElementById("in")
