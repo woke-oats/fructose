@@ -1,15 +1,11 @@
 import os
+from hashlib import blake2b
 
-from flask import (
-    Flask,
-    jsonify,
-    redirect,
-    render_template,
-    request,
-    send_from_directory,
-    url_for,
-)
+from flask import (Flask, jsonify, redirect, render_template, request,
+                   send_from_directory, url_for)
 from werkzeug.utils import secure_filename
+
+MAX_FILE_SIZE = 1440000  # 1.44mb in bytes
 
 # where uploads will be stored
 UPLOAD_FOLDER = "./uploads"
@@ -26,11 +22,14 @@ app = Flask(__name__, static_url_path="", static_folder="static")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
+def get_ext(filename):
+    """ Get file extension """
+    return filename.rsplit(".", 1)[1].lower()
+
+
 def allowed_file(filename):
     """ Checks if file extension is allowed """
-    return (
-        "." in filename and filename.rsplit(".", 1)[1].lower() not in BANNED_EXTENSIONS
-    )
+    return "." in filename and get_ext(filename) not in BANNED_EXTENSIONS
 
 
 @app.route("/")
@@ -47,14 +46,23 @@ def upload_file():
         app.logger.error("no file attached")
         return jsonify({})
 
-    allowed = allowed_file(file.filename)
+    file.seek(0, 2)  # go to the end of the file
+    size = file.tell()  # find how many bytes are there
+    print(size)
+    allowed = allowed_file(file.filename) and size <= MAX_FILE_SIZE
 
     if file and allowed:
-        filename = secure_filename(file.filename)
+        hash3 = blake2b(digest_size=20)
+        hash3.update(file.read())
+        filename = hash3.hexdigest() + "." + get_ext(file.filename)
+        file.seek(0)  # required to save file properly since read() reads it all
         file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
         # return redirect(url_for("uploaded_file", filename=filename)) # no need to redirect automatically
 
         return jsonify({"url": url_for("uploaded_file", filename=filename)})
+
+    else:
+        return jsonify({"url": "Error: file too large"})
 
 
 @app.route("/uploads/<filename>")

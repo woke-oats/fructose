@@ -116,7 +116,15 @@
             }).then(
                 response => response.json()
             ).then(
-                data => console.log(data)
+                data => {
+                    console.log(data)
+                    child = document.createElement("li")
+                    child.innerHTML = "<a href=" + data.url + ">" + data.url + " </a>"
+
+                    document.getElementById("linkList").appendChild(
+                        child
+                    )
+                }
             )
         }
     </script>
