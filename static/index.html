@@ -44,20 +44,32 @@
             font-size: 40px;
         }
 
+        input {
+            padding-bottom: 10px;
+        }
+
         .comicsans {
             font-family: 'Comic Sans MS', sans-serif;
         }
 
         footer {
-            position: absolute;
+            position: relative;
             font-size: 30px;
             width: 100%;
             bottom: 0;
         }
 
+        a {
+            color: #27A4DD;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
         li {
-            color: #9FD1FF;
-            font-size: 2vw;
+            font-size: 25px;
         }
 
         @media only screen and (max-width: 750px) {
@@ -74,9 +86,14 @@
                 background-size: 15vw auto;
             }
 
+            li {
+                font-size: 5vw;
+            }
+
         }
+
         @media only screen and (max-width: 600px) {
-        #logo {
+            #logo {
                 width: 80%;
                 height: auto;
             }
@@ -91,8 +108,10 @@
     </div>
     <div id="form">
         <p>no files over 1.44MB. we still use floppy disks.</p>
-        <input id="in" type="file" name="file">
-        <button id="btn" onclick="upload()">upload</button>
+        <div id="upload">
+            <input id="in" type="file" name="file">
+            <button id="btn" onclick="upload()">upload</button>
+        </div>
         <div id="links">
             <ul id="linkList">
             </ul>

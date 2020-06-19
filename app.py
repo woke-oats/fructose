@@ -16,7 +16,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 
 # a few sane extensions to ban
-BANNED_EXTENSIONS = {"exe", "app", "deb"}
+BANNED_EXTENSIONS = {"exe", "app", "deb", "msi"}
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
