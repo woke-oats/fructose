@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>fructose</title>
     <meta charset="UTF-8">
     <meta name="description" content="the sweetest file hosting service">
     <meta name="author" content="Woke Oats">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #ffbebe;
-            color: #84C3FF;
+            background-color: #FFBEBE;
+            color: #F276C9;
             font-size: 3vw;
             text-align: center;
             font-family: 'Dosis', sans-serif;
@@ -19,15 +20,29 @@
         #logo {
             width: 30%;
         }
+
+        #heading {
+            line-height: 0px;
+        }
+
+        #form {
+            background-color: #BEFFC0;
+        }
     </style>
 </head>
+
 <body>
-    <img src="img/logo_blue.png" id="logo">
-    <p>the sweetest file hosting service</p>
-    <form action="/upload">
-        <label for="files">Select files:</label>
-        <input type="file" id="files" name="files" multiple><br><br>
-        <input type="submit">
-      </form> 
+    <div id="heading">
+        <img src="img/logo_blue.png" id="logo">
+        <p>the sweetest file hosting service</p>
+    </div>
+    <div id="form">
+        <form action="/upload">
+            <label for="files">Select files:</label>
+            <input type="file" id="files" name="files" multiple><br><br>
+            <input type="submit">
+        </form>
+    </div>
 </body>
+
 </html>
