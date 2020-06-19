@@ -37,12 +37,28 @@
         <p>the sweetest file hosting service</p>
     </div>
     <div id="form">
-        <input type=file name=file>
-        <input id="btn" type=submit value=Upload>
+        <input id="in" type="file" name="file">
+        <button id="btn" onclick="upload()">upload</button>
     </div>
 
     <script>
+        const input = document.getElementById("in")
+        const btn = document.getElementById("btn")
 
+        function upload() {
+            var form = new FormData()
+
+            form.append("file", input.files[0])
+
+            fetch("/upload", {
+                method: "POST",
+                body: form
+            }).then(
+                response => response.json()
+            ).then(
+                data => console.log(data)
+            )
+        }
     </script>
 </body>
 </html>
