@@ -1,6 +1,8 @@
 # fructose
 🍉The sweetest file hosting service
 
+![A Screenshot of Fructose in action](fructose.png)
+
 ## What is fructose?
 > Fructose, or fruit sugar, is a simple ketonic monosaccharide found in many plants
 
